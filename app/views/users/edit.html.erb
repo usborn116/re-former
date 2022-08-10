@@ -1,0 +1,46 @@
+<h1>Existing User</h1>
+
+<%= form_with model: @user do |form| %>
+ <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+  <%= form.label :username, "Enter user name:" %>
+  <%= form.text_field :username, placeholder: 'username123'%>
+  <%= form.label :email, "Email:" %>
+  <%= form.text_field :email, placeholder: 'email@example.com'%>
+  <%= form.label :password, "Password:" %>
+  <%= form.password_field :password %>
+  <%= form.submit "Update" %>
+<% end %>
+
+<!-- 
+<form accept-charset="UTF-8" action="/users" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="username">User name:</label>
+  <input type="text" id="username" name="user[username]"><br><br>
+  <label for="email">Email address:</label>
+  <input type="text" id="email" name="user[email]"><br><br>
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="user[password]"><br><br>
+  <input type="submit" value="Submit">
+</form>
+-->
+
+<!-- 
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:username, "User name:") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:email) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+-->
